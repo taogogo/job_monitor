@@ -12,7 +12,7 @@ job_monitor
 
 ##安装说明
 在sae新建应用，将代码提交到应用，然后在mysql内执行如下建表语句：
-
+```
 CREATE TABLE IF NOT EXISTS `log` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `key` varchar(64) NOT NULL COMMENT '任务标示',
@@ -22,3 +22,4 @@ CREATE TABLE IF NOT EXISTS `log` (
   PRIMARY KEY (`id`),
   KEY `create_time` (`create_time`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=148 ;
+```
