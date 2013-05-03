@@ -25,6 +25,9 @@ CREATE TABLE IF NOT EXISTS `log` (
 ```
 
 ##使用说明
+###常规设置
+在config.ini内设置查看白名单ip和管理密码，不在ip白名单的用户需要输入管理密码才能进入查看页面。在此文件内也可以设定type类型（在调用接口的时候会传递type参数）
+###任务设置
 
 在module.ini内设置任务，比如默认为：
 ```
@@ -40,9 +43,22 @@ name="系统MQ队列堆积"
 time_monitor=Off
 color="red"
 ```
+
+###调用接口
+
 任务执行开始时调用
+
 http://项目地址/api.php?key=flush_log_day_merge&type=1&content=开始
+
 结束时调用
+
 http://项目地址/api.php?key=flush_log_day_merge&type=2&content=结束
+
+
+###查看任务
 在http://项目地址/就可以看到相应的调用信息。
-如果设置了approximate_start_time和approximate_stop_time参数，如果在设置的时间内没有调用接口，在查看页面就会有红色警告
+
+如果time_monitor=On且设置了approximate_start_time和approximate_stop_time参数，在设置的时间内没有调用接口，在查看页面就会有红色警告显示。
+###定制导航
+在links.ini内设置查看页面的展示链接，定制你的导航页面。
+
