@@ -23,3 +23,26 @@ CREATE TABLE IF NOT EXISTS `log` (
   KEY `create_time` (`create_time`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=148 ;
 ```
+
+##使用说明
+
+在module.ini内设置任务，比如默认为：
+```
+[flush_log_day_merge]
+name="三方日志融合脚本"
+time_monitor=On
+approximate_start_time="14:00"
+approximate_stop_time="16:00"
+color="#00"
+
+[mq_accumulation]
+name="系统MQ队列堆积"
+time_monitor=Off
+color="red"
+```
+任务执行开始时调用
+http://项目地址/api.php?key=flush_log_day_merge&type=1&content=开始
+结束时调用
+http://项目地址/api.php?key=flush_log_day_merge&type=2&content=结束
+在http://项目地址/就可以看到相应的调用信息。
+如果设置了approximate_start_time和approximate_stop_time参数，如果在设置的时间内没有调用接口，在查看页面就会有红色警告
